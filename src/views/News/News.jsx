@@ -17,11 +17,15 @@ const News = () => {
             component={()=> (
             <div>
                 <h1>這裡是最新消息</h1>
-                <NewsList news></NewsList>
+                <NewsList news={news}></NewsList>
             </div>
         )}>
         </Route>
-        <Route path="/news/newsReader/:id" component={(props)=><NewsReader match={props.match} news={news}></NewsReader>}></Route>
+        {/* <Route path="/news/newsReader/:id" component={(props)=><NewsReader match={props.match} news={news}></NewsReader>}></Route> */}
+        {
+            //使用useParams
+        }
+        <Route path="/news/newsReader/:id" component={()=><NewsReader news={news}/>}></Route>
     </Switch>
     )
 
