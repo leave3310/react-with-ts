@@ -1,23 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux'
+
 import Home from './views/Home'
 import About from './views/About'
 import Menu from './components/Menu'
 import NotFound from './views/NotFound'
 import News from './views/News'
+import store from './store'
 
 ReactDOM.render(
-  <HashRouter>
-    <Menu></Menu>
-    <Switch>
-      <Route exact path="/home" component={Home}></Route>
-      <Route exact path="/about" component={About}></Route>
-      <Route path="/news" component={News}></Route>
-      <Route path="/" component={NotFound}></Route>
-
-    </Switch>
-  </HashRouter>
+  <Provider store={store}>
+    <HashRouter>
+      <Menu></Menu>
+      <Switch>
+        <Route exact path="/home" component={Home}></Route>
+        <Route exact path="/about" component={About}></Route>
+        <Route path="/news" component={News}></Route>
+        <Route path="/" component={NotFound}></Route>
+      </Switch>
+    </HashRouter>
+  </Provider>
+  
   ,
   document.getElementById('root')
 );

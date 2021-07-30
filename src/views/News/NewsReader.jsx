@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
+import { connect } from 'react-redux'
 // const NewsReader = ({match, news}) =>{
 //     console.log(match)
 //     const targetNewsId = match.params.id
@@ -27,4 +28,8 @@ const NewsReader = ({ news}) =>{
     )
 }
 
-export default NewsReader
+const mapStateToProps = (state) => ({
+    news: state.news
+})
+
+export default connect(mapStateToProps)(NewsReader)
