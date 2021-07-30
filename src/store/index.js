@@ -1,6 +1,9 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import news from '../reducers/news'
+import user from '../reducers/user'
 
-const store = createStore(news)
+const store = createStore(
+    combineReducers({news, user})
+)
 
 export default store

@@ -28,8 +28,11 @@ const NewsReader = ({ news}) =>{
     )
 }
 
+// const mapStateToProps = (state) => ({
+//     news: state.news
+// })
 const mapStateToProps = (state) => ({
-    news: state.news
+    news: state.news.news,
+    user: state.user.name
 })
-
 export default connect(mapStateToProps)(NewsReader)
