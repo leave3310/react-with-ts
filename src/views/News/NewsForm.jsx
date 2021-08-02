@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
+const mapDispatchToProps = (dispatch) =>({
+    addNews: (news) => {
+        dispatch({type: 'ADD_NEWS', payload: {news}})
+    }
+})
+
 const NewsForm = (props) => {
     const [newsForm, setNewsForm] = useState({
         name: '',
@@ -19,12 +25,7 @@ const NewsForm = (props) => {
 
         }}/>
         <button onClick={()=>{
-            props.dispatch(
-                {
-                    type: 'ADD_NEWS',
-                    payload: {news:{id:Math.random(), name: newsForm.name , describe: newsForm.describe}}
-                }
-            )
+            props.addNews({id:Math.random, name: newsForm.name, describe: newsForm.describe})
         }}>新增最新消息</button>
     </div>
     )
@@ -32,4 +33,4 @@ const NewsForm = (props) => {
     
 
 
-export default connect()(NewsForm)
+export default connect(null, mapDispatchToProps)(NewsForm)
