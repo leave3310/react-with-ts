@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
+import { addNews } from '../../actions/news'
+
 const mapDispatchToProps = (dispatch) =>({
     addNews: (news) => {
-        dispatch({type: 'ADD_NEWS', payload: {news}})
+        dispatch(addNews(news))
     }
 })
 
