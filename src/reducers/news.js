@@ -8,6 +8,14 @@ const initialState = {
 
 const news = (state = initialState, action) => {
     switch (action.type) {
+        case 'ADD_NEWS':
+            return {
+                ...state,
+                news: [
+                    ...state.news,
+                    action.payload.news
+                ]
+            }
         default:
             return state
     }
