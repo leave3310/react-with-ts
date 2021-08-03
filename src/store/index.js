@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import news from '../reducers/news'
 import user from '../reducers/user'
 
@@ -9,20 +10,13 @@ const logger = (store) => (next) => (action) => {
     const result = next(action)
 
     console.log('執行之後的 state:', store.getState())
-    return '我是logger1的回傳值'
+    return result
 }
 
-const logger2 = (store) => (next) => (action) => {
-    
-    const result = next(action)
-
-    console.log(result)
-    
-}
 
 const store = createStore(
-    combineReducers({news, user}),
-    applyMiddleware(logger2,logger)
+    combineReducers({ news, user }),
+    applyMiddleware(thunk, logger)
 )
 
 export default store

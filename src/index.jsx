@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
 
+import 'regenerator-runtime/runtime'
+import 'core-js/stable'
+
 import Home from './views/Home'
 import About from './views/About'
 import Menu from './components/Menu'
