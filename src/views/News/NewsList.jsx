@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 import { deleteNews } from '../../actions/news'
-
-
 
 const NewsList = (props) => {
     return (
         <ul>
             {
-                props.news.map(theNews => (
+                useSelector((state) => state.news.news).map(theNews => (
+
                     <li key={theNews.id}>
                         <Link to={`/news/newsReader/${theNews.id}`}>
                             {theNews.name}
@@ -25,14 +24,9 @@ const NewsList = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    news: state.news.news,
-    user: state.user.name
-})
-
 const mapDispatchToProps = (dispatch) =>({
     deleteNews: (id) =>{
         dispatch(deleteNews(id))
     }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(NewsList)
+export default connect(null, mapDispatchToProps)(NewsList)

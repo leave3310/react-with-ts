@@ -1,22 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { connect } from 'react-redux'
-// const NewsReader = ({match, news}) =>{
-//     console.log(match)
-//     const targetNewsId = match.params.id
-//     const targetNews = news.find((theNews)=>(
-//         String(theNews.id) === String(targetNewsId)
-//     ))
-//     return (
-//         <div>
-//             <h1>您正在閱讀 { targetNews.name }</h1>
-//             <p>{ targetNews.describe }</p>
-//         </div>
-//     )
-// }
+import { useSelector } from 'react-redux'
 
-const NewsReader = ({ news}) =>{
+
+const NewsReader = () =>{
     const { id: targetNewsId } = useParams()
+    const news = useSelector((state) => state.news.news)
     const targetNews = news.find((theNews)=>(
         String(theNews.id) === String(targetNewsId)
     ))
@@ -28,8 +17,5 @@ const NewsReader = ({ news}) =>{
     )
 }
 
-const mapStateToProps = (state) => ({
-    news: state.news.news,
-    user: state.user.name
-})
-export default connect(mapStateToProps)(NewsReader)
+
+export default NewsReader
