@@ -9,12 +9,20 @@ const logger = (store) => (next) => (action) => {
     const result = next(action)
 
     console.log('執行之後的 state:', store.getState())
-    return result
+    return '我是logger1的回傳值'
+}
+
+const logger2 = (store) => (next) => (action) => {
+    
+    const result = next(action)
+
+    console.log(result)
+    
 }
 
 const store = createStore(
     combineReducers({news, user}),
-    applyMiddleware(logger)
+    applyMiddleware(logger2,logger)
 )
 
 export default store
