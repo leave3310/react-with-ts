@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
-
+// this is for babel's async await 
 import 'regenerator-runtime/runtime'
 import 'core-js/stable'
 
@@ -12,10 +12,12 @@ import Menu from './components/Menu'
 import NotFound from './views/NotFound'
 import News from './views/News'
 import store from './store'
+import Counter from './components/Counter'
 
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
+      <Counter />
       <Menu></Menu>
       <Switch>
         <Route exact path="/home" component={Home}></Route>
