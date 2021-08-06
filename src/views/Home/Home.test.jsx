@@ -4,7 +4,7 @@ import React from 'react'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import { toBeInTheDocument } from '@testing-library/jest-dom/matchers'
 
 import user from '../../reducers/user'
@@ -12,7 +12,7 @@ import Home from './Home'
 
 expect.extend({toBeInTheDocument})
 
-test('The view will display user infromation from api after Home rendered',() => {
+test('The view will display user infromation from api after Home rendered',async () => {
     // Arrange
     global.fetch = jest.fn().mockResolvedValue(
         { json: () => ({user: 'KK'}) }
@@ -29,9 +29,8 @@ test('The view will display user infromation from api after Home rendered',() =>
         </Provider>
     )
 
-    const userInformation = getByText(/KK/)
-
     // Assert
-    expect(userInformation).toBeInTheDocument()
-
+    await waitFor(()=>{
+        expect(getByText(/KK/)).toBeInTheDocument()
+    })
 })
