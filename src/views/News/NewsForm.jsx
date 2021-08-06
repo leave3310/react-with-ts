@@ -16,11 +16,11 @@ const NewsForm = (props) => {
     })
     return (
         <div>
-        名稱: <input type="text" value={newsForm.name} onChange={(e)=>{setNewsForm({
+        名稱: <input type="text" placeholder="請輸入名稱" value={newsForm.name} onChange={(e)=>{setNewsForm({
             ...newsForm,
             name: e.target.value
             })}}/>
-        敘述: <input type="text" value={newsForm.describe} onChange={(e)=>{ setNewsForm({
+        敘述: <input type="text" placeholder="請輸入敘述" value={newsForm.describe} onChange={(e)=>{ setNewsForm({
             ...newsForm,
             describe: e.target.value
         })

@@ -12,11 +12,11 @@ const News = () => {
             exact
             path="/news"
             component={()=> (
-            <div>
+            <>
                 <h1>這裡是最新消息</h1>
                 <NewsForm></NewsForm>
                 <NewsList ></NewsList>
-            </div>
+            </>
         )}>
         </Route> 
         {
