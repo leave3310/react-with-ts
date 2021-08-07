@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-
+import { Dispatch } from 'redux'
 import { addNews } from '../../actions/news'
+import { AddNews } from '../../actions/news'
 
-const mapDispatchToProps = (dispatch) =>({
-    addNews: (news) => {
+const mapDispatchToProps = (dispatch: Dispatch) =>({
+    addNews: (news: AddNews) => {
         dispatch(addNews(news))
     }
 })

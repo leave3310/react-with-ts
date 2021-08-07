@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 
-const useCounter = (initialCounter, callbackFunction) => {
-    const [count, setCount] = useState(initialCounter)
+const useCounter = (initialCounter: number, callbackFunction: React.EffectCallback) => {
+    const [count, setCount] = useState<number>(initialCounter)
 
     useEffect(callbackFunction, [count])
 
-    const add = (addend) => {
+    const add = (addend: number) => {
         setCount(count + addend)
     }
 
-    return { count, add }
+    return { count, add } as const
 }
 
 export default useCounter
