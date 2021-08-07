@@ -1,9 +1,15 @@
-const initialState = {
+import { UserActionTypes } from "../actions/user"
+export interface UserState {
+    name: string,
+    user: any
+}
+
+const initialState: UserState = {
     name: 'KK',
     user: {}
 }
 
-const user = (state = initialState, action) => {
+const user = (state = initialState, action:UserActionTypes): UserState => {
     switch (action.type) {
         case 'SET_USER':
             return {
